@@ -6,6 +6,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Install MinGW-w64
+      run: apt install mingw-w64
+
     - name: Checkout repository
       uses: actions/checkout@v4
 
