@@ -6,7 +6,6 @@ on:
     types: [opened, closed, synchronize]
 
 jobs:
-  CLAssistant:
   upload-artefact:
     runs-on: ubuntu-latest
 
@@ -19,8 +18,11 @@ jobs:
       with:
         target: x86_64-pc-windows-gnu
 
+    - name: "Build"
+      run: cargo build --target=x86_64-pc-windows-gnu
+
     - name: Upload binary
       uses: actions/upload-artifact@v3
       with:
         name: test_ci_binary
-        path: target/debug/test_ci
+        path: target/x86_64-pc-windows-gnu/debug/test_ci.exe
