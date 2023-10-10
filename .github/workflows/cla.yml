@@ -27,7 +27,7 @@ jobs:
           path-to-signatures: "signatures/cla.json"
           path-to-document: "https://github.com/SoloJacobs/test_ci/blob/main/licenses/cla.md"
           # branch should be protected
-          branch: "main"
+          branch: "cla"
           allowlist: bot*
 
           #below are the optional inputs - If the optional inputs are not given, then default values will be taken
