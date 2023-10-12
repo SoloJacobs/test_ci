@@ -1,3 +1,4 @@
+---
 name: RCC
 
 on:
@@ -9,14 +10,14 @@ on:
     - .github/workflows/rcc.yaml
 
 jobs:
-  build_and_test:
+  build_rcc_from_source:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        repository: elabit/robotmk
+        repository: robocorp/rcc
         ref: v14.15.4
 
     - name: Setup Rake
