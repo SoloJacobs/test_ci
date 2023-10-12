@@ -33,7 +33,9 @@ jobs:
           ruby-version: '2.7'
 
     - name: "Build RCC"
-      run: rake -C rcc build
+      working-directory: rcc
+      run: rake build
 
     - name: "Test RCC"
-      run: rake -C rcc test
+      working-directory: rcc
+      run: rake test
