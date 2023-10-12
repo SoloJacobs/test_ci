@@ -22,15 +22,15 @@ jobs:
       - name: "Download All"
         uses: actions/download-artifact@v3
 
-      - name: "DEBUG"
-        run: find .
+      - name: "Show Available Artifacts"
+        run: find . -type f
 
       - name: "Update Release"
         uses: ncipollo/release-action@v1.13.0
         with:
           name: "Daily Build"
           allowUpdates: true
-          artifacts: "./artifact/robotmk_collector.ps1,./artifact/windows64/rcc.exe"
+          artifacts: "./artifact/robotmk_collector.ps1,./artifact/windows64/rcc.exe,./artifact/x86_64-pc-windows-gnu/release/robotmk.exe"
           replacesArtifacts: true
           removeArtifacts: true
           prerelease: true
