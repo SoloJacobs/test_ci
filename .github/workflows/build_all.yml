@@ -13,11 +13,11 @@ jobs:
     uses: SoloJacobs/test_ci/.github/workflows/robotmk.yml@main
   build_rcc:
     uses: SoloJacobs/test_ci/.github/workflows/rcc.yml@main
-  build_test:
-    uses: SoloJacobs/test_ci/.github/workflows/test.yml@main
+  build_collector:
+    uses: SoloJacobs/test_ci/.github/workflows/robotmk_collector.yml@main
   download:
     runs-on: ubuntu-latest
-    needs: [build_test, build_robotmk, build_rcc]
+    needs: [build_collector, build_robotmk, build_rcc]
     steps:
       - name: "Download All"
         uses: actions/download-artifact@v3

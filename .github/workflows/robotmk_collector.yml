@@ -1,13 +1,13 @@
 ---
-name: "TEST"
+name: "Robotmk Collector"
 
 on:
   push:
     paths:
-    - .github/workflows/test.yml
+    - .github/workflows/robotmk_collector.yml
   pull_request:
     paths:
-    - .github/workflows/test.yml
+    - .github/workflows/robotmk_collector.yml
   workflow_call: {}
 
 jobs:
@@ -22,8 +22,9 @@ jobs:
         ref: 610122edc937bfd74c4879cc85df365c9db437aa
         path: robotmk
 
-    - name: 'Upload Artifact'
+    - name: "Upload Artifact"
       uses: actions/upload-artifact@v3
       with:
         name: robotmk_collector.ps1
         path: checkmk_extensions/agent/robotmk_collector.ps1
+        if-no-files-found: error
