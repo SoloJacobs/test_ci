@@ -1,0 +1,15 @@
+---
+name: "Build All"
+on:
+  push:
+    paths:
+    - .github/workflows/build_all.yml
+  pull_request:
+    paths:
+    - .github/workflows/build_all.yml
+
+jobs:
+  build_robotmk:
+    uses: .github/workflows/robotmk.yml
+  build_rcc:
+    uses: .github/workflows/rcc.yml

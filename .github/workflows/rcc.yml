@@ -8,6 +8,7 @@ on:
   pull_request:
     paths:
     - .github/workflows/rcc.yml
+  workflow_call: {}
 
 jobs:
   build_rcc_from_source:
