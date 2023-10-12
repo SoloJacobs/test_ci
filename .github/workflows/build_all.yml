@@ -3,10 +3,10 @@ name: "Build All"
 on:
   push:
     paths:
-    - .github/workflows/build_all.yml
+      - .github/workflows/build_all.yml
   pull_request:
     paths:
-    - .github/workflows/build_all.yml
+      - .github/workflows/build_all.yml
 
 jobs:
   # build_robotmk:
@@ -14,10 +14,9 @@ jobs:
   # build_rcc:
   #   uses: SoloJacobs/test_ci/.github/workflows/rcc.yml@main
   build_test:
-    - name: "Create LICENSE"
-      uses: SoloJacobs/test_ci/.github/workflows/test.yml@main
+    uses: SoloJacobs/test_ci/.github/workflows/test.yml@main
 
-    - name: 'Download Artifact'
-      uses: actions/download-artifact@v3
-      with:
-        name: my-artifact
+  download_artefact:
+    uses: actions/download-artifact@v3
+    with:
+      name: my-artifact
