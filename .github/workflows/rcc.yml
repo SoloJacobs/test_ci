@@ -39,3 +39,9 @@ jobs:
 
     - name: "Test RCC"
       run: rake -C rcc test
+
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+        name: rcc.exe
+        path: rcc/build
