@@ -30,7 +30,7 @@ jobs:
         with:
           name: "Daily Build"
           allowUpdates: true
-          artifacts: "./artifact/robotmk_collector.ps1"
+          artifacts: "./artifact/robotmk_collector.ps1,./artifact/windows64/rcc.exe"
           replacesArtifacts: true
           removeArtifacts: true
           prerelease: true

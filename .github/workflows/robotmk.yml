@@ -29,12 +29,18 @@ jobs:
       - name: "Install MinGW-w64"
         run: sudo apt-get install -y mingw-w64
 
-      - name: "Build Robotmk"
+      - name: "Build Robotmk Windows"
         working-directory: robotmk/v2/rust/
         run: cargo build --target=x86_64-pc-windows-gnu --release
+
+      - name: "Build Robotmk Linux"
+        working-directory: robotmk/v2/rust/
+        run: cargo build --release
 
       - name: "Upload Artifact"
         uses: actions/upload-artifact@v3
         with:
-          path: robotmk/v2/rust/target
+          path: |
+            robotmk/v2/rust/target/x86_64-pc-windows-gnu/release/robotmk.exe
+            robotmk/v2/rust/target/release/robotmk
           if-no-files-found: error
