@@ -19,6 +19,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_test
     steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: my-artifact
+      - name: "Download All"
+        uses: actions/download-artifact@v3
