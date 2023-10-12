@@ -10,6 +10,6 @@ on:
 
 jobs:
   build_robotmk:
-    uses: ./github/workflows/robotmk.yml@v1
+    uses: ./github/workflows/robotmk.yml@main
   build_rcc:
-    uses: ./github/workflows/rcc.yml@v1
+    uses: ./github/workflows/rcc.yml@main
