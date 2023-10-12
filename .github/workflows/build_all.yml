@@ -14,9 +14,8 @@ jobs:
   # build_rcc:
   #   uses: SoloJacobs/test_ci/.github/workflows/rcc.yml@main
   build_test:
-    steps:
-      - uses: SoloJacobs/test_ci/.github/workflows/test.yml@main
-
-      - uses: actions/download-artifact@v3
-        with:
-          name: my-artifact
+    uses: SoloJacobs/test_ci/.github/workflows/test.yml@main
+  download:
+    - uses: actions/download-artifact@v3
+      with:
+        name: my-artifact
