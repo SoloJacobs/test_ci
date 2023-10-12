@@ -44,5 +44,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: rcc.exe
-        path: rcc/build
+        path: rcc/build/rcc.exe
         if-no-files-found: error

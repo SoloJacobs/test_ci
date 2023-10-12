@@ -26,5 +26,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: robotmk_collector.ps1
-        path: checkmk_extensions/agent/robotmk_collector.ps1
+        path: robotmk/checkmk_extensions/agent/robotmk_collector.ps1
         if-no-files-found: error
