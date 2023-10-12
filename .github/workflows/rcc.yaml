@@ -19,6 +19,7 @@ jobs:
       with:
         repository: robocorp/rcc
         ref: v14.15.4
+        path: rcc
 
     - name: Setup Rake
       run: |
