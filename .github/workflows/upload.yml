@@ -17,6 +17,7 @@ jobs:
         uses: ncipollo/release-action@v1.13.0
         with:
           name: Daily Build
+          allowUpdates: true
           artifacts: LICENSE
           replacesArtifacts: true
           removeArtifacts: true
