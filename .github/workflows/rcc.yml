@@ -22,23 +22,23 @@ jobs:
         ref: v14.15.4
         path: rcc
 
-    - name: "Setup Rake"
-      run: |
-        sudo apt-get install rubygems
-        sudo gem install rake
-
     - name: "Setup Go"
-      run: |
-        wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
-        # rcc expects $HOME/go/bin to be present (hard-coded)
-        tar -C $HOME -xzf go1.21.0.linux-amd64.tar.gz
-        echo "PATH=$PATH:$HOME/go/bin" >> $GITHUB_ENV
+      uses: actions/setup-go@v3
+      with:
+        go-version: '1.20.x'
+
+    - name: "Setup Rake"
+      uses: ruby/setup-ruby@v1
+      with:
+          ruby-version: '2.7'
 
     - name: "Build RCC"
-      run: rake -C rcc build
+      working-directory: rcc
+      run: rake build
 
     - name: "Test RCC"
-      run: rake -C rcc test
+      working-directory: rcc
+      run: rake test
 
     - name: "Upload Artifact"
       uses: actions/upload-artifact@v3
