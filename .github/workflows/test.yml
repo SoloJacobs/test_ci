@@ -1,0 +1,39 @@
+---
+name: "RCC"
+
+on:
+  push:
+    paths:
+    - .github/workflows/test.yml
+  pull_request:
+    paths:
+    - .github/workflows/test.yml
+  workflow_call: {}
+
+jobs:
+  build_rcc_from_source:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "Checkout repository"
+      uses: actions/checkout@v4
+      with:
+        repository: robocorp/rcc
+        ref: v14.15.4
+        path: rcc
+
+    - name: "Setup Go"
+      uses: actions/setup-go@v3
+      with:
+        go-version: '1.20.x'
+
+    - name: "Setup Rake"
+      uses: ruby/setup-ruby@v1
+      with:
+          ruby-version: '2.7'
+
+    - name: "Build RCC"
+      run: rake -C rcc build
+
+    - name: "Test RCC"
+      run: rake -C rcc test
