@@ -1,6 +1,5 @@
 ---
 name: "Robotmk Collector"
-
 on:
   push:
     paths:
