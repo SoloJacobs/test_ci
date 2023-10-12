@@ -9,15 +9,24 @@ on:
       - .github/workflows/build_all.yml
 
 jobs:
-  build_robotmk:
-    uses: SoloJacobs/test_ci/.github/workflows/robotmk.yml@main
-  build_rcc:
-    uses: SoloJacobs/test_ci/.github/workflows/rcc.yml@main
   build_collector:
     uses: SoloJacobs/test_ci/.github/workflows/robotmk_collector.yml@main
   download:
     runs-on: ubuntu-latest
-    needs: [build_collector, build_robotmk, build_rcc]
+    needs: [build_collector]
     steps:
       - name: "Download All"
         uses: actions/download-artifact@v3
+
+      - name: "Update Release"
+        uses: ncipollo/release-action@v1.13.0
+        with:
+          name: "Daily Build"
+          allowUpdates: true
+          artifacts: [robotmk_collector.ps1]
+          replacesArtifacts: true
+          removeArtifacts: true
+          prerelease: true
+          artifactErrorsFailBuild: true
+          updateOnlyUnreleased: true
+          makeLatest: false
