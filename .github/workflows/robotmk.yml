@@ -32,9 +32,9 @@ jobs:
       - name: "Build Robotmk"
         working-directory: robotmk/v2/rust/
         run: cargo build --target=x86_64-pc-windows-gnu --release
-      - name: 'Upload Artifact'
-        working-directory: robotmk/v2/rust/
-        uses: actions/upload-artifact@v3
-        with:
-          name: robotmk.exe
-          path: target/x86_64-pc-windows-gnu/release/robotmk.exe
+          #      - name: 'Upload Artifact'
+          #        working-directory: robotmk/v2/rust/
+          #        uses: actions/upload-artifact@v3
+          #        with:
+          #          name: robotmk.exe
+          #          path: target/x86_64-pc-windows-gnu/release/robotmk.exe
