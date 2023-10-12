@@ -16,6 +16,8 @@ jobs:
   build_test:
     uses: SoloJacobs/test_ci/.github/workflows/test.yml@main
   download:
-    - uses: actions/download-artifact@v3
-      with:
-        name: my-artifact
+    needs: build_test
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
