@@ -9,10 +9,10 @@ on:
       - .github/workflows/build_all.yml
 
 jobs:
-  # build_robotmk:
-  #   uses: SoloJacobs/test_ci/.github/workflows/robotmk.yml@main
-  # build_rcc:
-  #   uses: SoloJacobs/test_ci/.github/workflows/rcc.yml@main
+  build_robotmk:
+    uses: SoloJacobs/test_ci/.github/workflows/robotmk.yml@main
+  build_rcc:
+    uses: SoloJacobs/test_ci/.github/workflows/rcc.yml@main
   build_test:
     uses: SoloJacobs/test_ci/.github/workflows/test.yml@main
   download:
