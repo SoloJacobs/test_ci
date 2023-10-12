@@ -3,10 +3,10 @@ name: "Robotmk"
 on:
   push:
     paths:
-    - .github/workflows/robotmk.yml
+      - .github/workflows/robotmk.yml
   pull_request:
     paths:
-    - .github/workflows/robotmk.yml
+      - .github/workflows/robotmk.yml
   workflow_call: {}
 
 jobs:
