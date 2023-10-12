@@ -33,5 +33,11 @@ jobs:
       - name: Update Release
         uses: ncipollo/release-action@v1.13.0
         with:
-          artifacts: target/x86_64-pc-windows-gnu/debug/test_ci.exe
+          name: Daily Build
+          artifacts: target/x86_64-pc-windows-gnu/debug/test_ci.exe, LICENSE
+          replaceArtifacts: true
+          removeArtifacts: true
+          prerelease: true
           artifactErrorsFailBuild: true
+          updateOnlyUnreleased: true
+          makeLatest: false
