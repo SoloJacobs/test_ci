@@ -1,27 +1,49 @@
 ---
-name: "Rust"
+name: "Robotmk"
 on:
   push:
-    tags:
-      - "v2-daily-build"
+    paths:
+    - .github/workflows/rcc.yaml
+  pull_request:
+    paths:
+    - .github/workflows/rcc.yaml
 
 jobs:
-  create-release:
+  build_robotmk_from_source:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Update Release
-        uses: ncipollo/release-action@v1.13.0
         with:
-          name: Daily Build
-          allowUpdates: true
-          artifacts: LICENSE
-          replacesArtifacts: true
-          removeArtifacts: true
-          prerelease: true
-          artifactErrorsFailBuild: true
-          updateOnlyUnreleased: true
-          makeLatest: false
+          repository: elabit/robotmk
+          ref: 610122edc937bfd74c4879cc85df365c9db437aa
+          path: robotmk
+
+      - name: "Setup Rust"
+        uses: actions-rust-lang/setup-rust-toolchain@v1.5.0
+        with:
+          target: x86_64-pc-windows-gnu
+
+      - name: Install MinGW-w64
+        run: sudo apt-get install -y mingw-w64
+
+      - name: "Build"
+        run: cargo build --target=x86_64-pc-windows-gnu
+
+
+
+
+            #create-release:
+            #      - name: Update Release
+            #        uses: ncipollo/release-action@v1.13.0
+            #        with:
+            #          name: Daily Build
+            #          allowUpdates: true
+            #          artifacts: LICENSE
+            #          replacesArtifacts: true
+            #          removeArtifacts: true
+            #          prerelease: true
+            #          artifactErrorsFailBuild: true
+            #          updateOnlyUnreleased: true
+            #          makeLatest: false
