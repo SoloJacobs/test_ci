@@ -9,7 +9,15 @@ on:
     - .github/workflows/build_all.yml
 
 jobs:
-  build_robotmk:
-    uses: SoloJacobs/test_ci/.github/workflows/robotmk.yml@main
-  build_rcc:
-    uses: SoloJacobs/test_ci/.github/workflows/rcc.yml@main
+  # build_robotmk:
+  #   uses: SoloJacobs/test_ci/.github/workflows/robotmk.yml@main
+  # build_rcc:
+  #   uses: SoloJacobs/test_ci/.github/workflows/rcc.yml@main
+  build_test:
+    - name: "Create LICENSE"
+      uses: SoloJacobs/test_ci/.github/workflows/test.yml@main
+
+    - name: 'Download Artifact'
+      uses: actions/download-artifact@v3
+      with:
+        name: my-artifact

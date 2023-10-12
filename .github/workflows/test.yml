@@ -1,0 +1,25 @@
+---
+name: "TEST"
+
+on:
+  push:
+    paths:
+    - .github/workflows/test.yml
+  pull_request:
+    paths:
+    - .github/workflows/test.yml
+  workflow_call: {}
+
+jobs:
+  build_rcc_from_source:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "Checkout repository"
+      uses: actions/checkout@v4
+
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: LICENSE
