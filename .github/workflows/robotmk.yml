@@ -3,10 +3,10 @@ name: "Robotmk"
 on:
   push:
     paths:
-    - .github/workflows/rust.yaml
+    - .github/workflows/robotmk.yaml
   pull_request:
     paths:
-    - .github/workflows/rust.yaml
+    - .github/workflows/robotmk.yaml
 
 jobs:
   build_robotmk_from_source:
