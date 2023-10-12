@@ -10,4 +10,4 @@ on:
 
 jobs:
   build_robotmk:
-    uses:  octo-org/example-repo/.github/workflows/called-workflow.yml@main
+    uses: SoloJacobs/test_ci/.github/workflows/robotmk.yml@v1
