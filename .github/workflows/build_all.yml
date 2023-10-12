@@ -10,4 +10,4 @@ on:
 
 jobs:
   build_robotmk:
-    uses: SoloJacobs/test_ci/.github/workflows/robotmk.yml@v1
+    uses: SoloJacobs/test_ci/.github/workflows/robotmk.yml@main
