@@ -11,15 +11,19 @@ on:
   workflow_call: {}
 
 jobs:
-  build_rcc_from_source:
+  build_robotmk_collector:
     runs-on: ubuntu-latest
 
     steps:
     - name: "Checkout repository"
       uses: actions/checkout@v4
+      with:
+        repository: elabit/robotmk
+        ref: 610122edc937bfd74c4879cc85df365c9db437aa
+        path: robotmk
 
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3
       with:
         name: robotmk_collector.ps1
-        path: LICENSE
+        path: checkmk_extensions/agent/robotmk_collector.ps1
