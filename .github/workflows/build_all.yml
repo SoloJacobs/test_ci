@@ -25,15 +25,15 @@ jobs:
       - name: "Show Available Artifacts"
         run: find . -type f
 
+      - name: "Zip Artifacts"
+        run: zip -r executables.zip artifact
+
       - name: "Update Release"
         uses: ncipollo/release-action@v1.13.0
         with:
           name: "Daily Build"
           allowUpdates: true
-          artifacts: "\
-            ./artifact/robotmk_collector.ps1,\
-            ./artifact/windows64/rcc.exe,\
-            ./artifact/x86_64-pc-windows-gnu/release/robotmk.exe"
+          artifacts: "executables.zip"
           replacesArtifacts: true
           removeArtifacts: true
           prerelease: true
