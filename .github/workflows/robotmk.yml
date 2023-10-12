@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: "Checkout repository"
         uses: actions/checkout@v4
         with:
           repository: elabit/robotmk
@@ -25,26 +25,9 @@ jobs:
         with:
           target: x86_64-pc-windows-gnu
 
-      - name: Install MinGW-w64
+      - name: "Install MinGW-w64"
         run: sudo apt-get install -y mingw-w64
 
-      - name: "Build"
+      - name: "Build Robotmk"
         working-directory: robotmk/v2/rust/
         run: cargo build --target=x86_64-pc-windows-gnu --release
-
-
-
-
-            #create-release:
-            #      - name: Update Release
-            #        uses: ncipollo/release-action@v1.13.0
-            #        with:
-            #          name: Daily Build
-            #          allowUpdates: true
-            #          artifacts: LICENSE
-            #          replacesArtifacts: true
-            #          removeArtifacts: true
-            #          prerelease: true
-            #          artifactErrorsFailBuild: true
-            #          updateOnlyUnreleased: true
-            #          makeLatest: false

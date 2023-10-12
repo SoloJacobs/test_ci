@@ -4,37 +4,37 @@ name: "RCC"
 on:
   push:
     paths:
-    - .github/workflows/rcc.yaml
+    - .github/workflows/rcc.yml
   pull_request:
     paths:
-    - .github/workflows/rcc.yaml
+    - .github/workflows/rcc.yml
 
 jobs:
   build_rcc_from_source:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: "Checkout repository"
       uses: actions/checkout@v4
       with:
         repository: robocorp/rcc
         ref: v14.15.4
         path: rcc
 
-    - name: Setup Rake
+    - name: "Setup Rake"
       run: |
         sudo apt-get install rubygems
         sudo gem install rake
 
-    - name: Setup Go
+    - name: "Setup Go"
       run: |
         wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
         # rcc expects $HOME/go/bin to be present (hard-coded)
         tar -C $HOME -xzf go1.21.0.linux-amd64.tar.gz
         echo "PATH=$PATH:$HOME/go/bin" >> $GITHUB_ENV
 
-    - name: Build RCC
+    - name: "Build RCC"
       run: rake -C rcc build
 
-    - name: Test RCC
+    - name: "Test RCC"
       run: rake -C rcc test
