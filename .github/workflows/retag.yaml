@@ -3,7 +3,7 @@ name: Move v2-daily-build
 on:
   schedule:
     # - cron: '0 2 * * *' # run at 2 AM UTC
-    - cron: '*/2 * * * *' # run at 2 AM UTC
+    - cron: '* * * * *' # run at 2 AM UTC
 jobs:
   build:
     runs-on: ubuntu-latest
