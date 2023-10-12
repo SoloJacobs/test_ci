@@ -1,5 +1,5 @@
 ---
-name: RCC
+name: "RCC"
 
 on:
   push:
