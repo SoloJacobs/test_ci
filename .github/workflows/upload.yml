@@ -1,8 +1,11 @@
 name: "Rust"
-on: [push, pull_request]
+on:
+  push:
+    tags:
+      - "v*.*.*"
 
 jobs:
-  upload-artefact:
+  create-release:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,3 +28,8 @@ jobs:
       with:
         name: test_ci_binary
         path: target/x86_64-pc-windows-gnu/debug/test_ci.exe
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+        with:
+          files: LICENSE
