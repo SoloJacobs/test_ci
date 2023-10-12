@@ -13,7 +13,7 @@ jobs:
     uses: SoloJacobs/test_ci/.github/workflows/robotmk_collector.yml@main
   download:
     runs-on: ubuntu-latest
-    needs: build_collector
+    needs: [build_collector]
     steps:
       - name: "Download All"
         uses: actions/download-artifact@v3
