@@ -30,9 +30,8 @@ jobs:
           name: test_ci_binary
           path: target/x86_64-pc-windows-gnu/debug/test_ci.exe
 
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
+      - name: Update Release
+        uses: ncipollo/release-action@v1.13.0
         with:
-          files: |
-            target/x86_64-pc-windows-gnu/debug/test_ci.exe
-          fail_on_unmatched_files: true
+          artifacts: target/x86_64-pc-windows-gnu/debug/test_ci.exe
+          artifactErrorsFailBuild: true
