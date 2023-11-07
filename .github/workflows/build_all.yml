@@ -9,20 +9,17 @@ on:
       - .github/workflows/build_all.yml
 
 jobs:
-  build_rcc:
-    uses: elabit/robotmk/.github/workflows/rcc.yaml@dev/sol/artifacts_II
+  build_release:
+    uses: elabit/robotmk/.github/workflows/release.yaml@dev/sol/artifacts_II
   release:
     runs-on: ubuntu-latest
-    needs: [build_rcc]
+    needs: [build_release]
     steps:
       - name: "Download All"
         uses: actions/download-artifact@v3
 
       - name: "Show Available Artifacts"
         run: find . -type f
-
-      - name: "Zip Artifacts"
-        run: zip -r executables.zip artifact
 
       - name: "Update Release"
         uses: ncipollo/release-action@v1.13.0
