@@ -10,9 +10,9 @@ on:
 
 jobs:
   build_robotmk:
-    uses: elabit/robotmk/.github/workflows/robotmk.yml@main
+    uses: elabit/robotmk/.github/workflows/robotmk.yaml@main
   build_rcc:
-    uses: elabit/robotmk/.github/workflows/rcc.yml@main
+    uses: elabit/robotmk/.github/workflows/rcc.yaml@main
   release:
     runs-on: ubuntu-latest
     needs: [build_rcc, build_robotmk]
