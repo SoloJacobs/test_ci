@@ -10,14 +10,12 @@ on:
 
 jobs:
   build_robotmk:
-    uses: SoloJacobs/test_ci/.github/workflows/robotmk.yml@main
+    uses: elabit/robotmk/.github/workflows/robotmk.yml@main
   build_rcc:
-    uses: SoloJacobs/test_ci/.github/workflows/rcc.yml@main
-  build_collector:
-    uses: SoloJacobs/test_ci/.github/workflows/robotmk_collector.yml@main
+    uses: elabit/robotmk/.github/workflows/rcc.yml@main
   release:
     runs-on: ubuntu-latest
-    needs: [build_collector, build_rcc, build_robotmk]
+    needs: [build_rcc, build_robotmk]
     steps:
       - name: "Download All"
         uses: actions/download-artifact@v3
