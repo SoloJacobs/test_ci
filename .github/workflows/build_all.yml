@@ -13,7 +13,7 @@ jobs:
     uses: elabit/robotmk/.github/workflows/rcc.yaml@dev/sol/artifacts_II
   release:
     runs-on: ubuntu-latest
-    needs: [build_rcc, build_robotmk]
+    needs: [build_rcc]
     steps:
       - name: "Download All"
         uses: actions/download-artifact@v3
