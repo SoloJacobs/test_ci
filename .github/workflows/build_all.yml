@@ -9,8 +9,6 @@ on:
       - .github/workflows/build_all.yml
 
 jobs:
-  build_robotmk:
-    uses: elabit/robotmk/.github/workflows/robotmk.yaml@dev/sol/artifacts_II
   build_rcc:
     uses: elabit/robotmk/.github/workflows/rcc.yaml@dev/sol/artifacts_II
   release:
