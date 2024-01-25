@@ -19,7 +19,6 @@ jobs:
         # release. For setting a different ref, all `needs` jobs need to be
         # adjusted. Currently, everything uses the default branch.
 
-      - run: touch executables.zip
       - run: ls -lh
 
       - name: "Push release tag"
