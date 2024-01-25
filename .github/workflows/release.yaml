@@ -1,0 +1,44 @@
+---
+name: "Release"
+# Careful! This pushes a git tag to GitHub! The release itself is private.
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: >
+          Tag, which is set by the this GitHub workflow.
+          Should follow SemVer and is not allowed to exist already.
+        required: true
+        type: string
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # Determines the ref, which is used for the
+        # release. For setting a different ref, all `needs` jobs need to be
+        # adjusted. Currently, everything uses the default branch.
+
+      - run: touch executables.zip
+      - run: ll
+
+      - name: "Push release tag"
+        # This is publicly visible and needs to be manually fixed if any
+        # consecutive step fails.
+        run: |
+          git tag ${{ inputs.tag }}  # Fails, if tag exists.
+          git push origin ${{ inputs.tag }}
+
+      - uses: ncipollo/release-action@v1.13.0
+        with:
+          allowUpdates: false
+          artifacts: "executables.zip,assets/robotmk_core-1.0.0.mkp"
+          replacesArtifacts: true
+          removeArtifacts: true
+          prerelease: true
+          draft: true
+          body: ""
+          artifactErrorsFailBuild: true
+          updateOnlyUnreleased: true
+          makeLatest: false
+          tag: ${{ inputs.tag }}
