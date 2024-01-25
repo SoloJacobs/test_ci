@@ -20,7 +20,7 @@ jobs:
         # adjusted. Currently, everything uses the default branch.
 
       - run: touch executables.zip
-      - run: ll
+      - run: ls -lh
 
       - name: "Push release tag"
         # This is publicly visible and needs to be manually fixed if any
