@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v4
       - run: mkdir C:\managed_robots
       - run: dir
-      - run: tar -c -a -f C:\managed_robots\retry_rcc_defN.zip test_ci\data\retry_rcc\
+      - run: tar -c -a -f C:\managed_robots\retry_rcc_defN.zip assets
