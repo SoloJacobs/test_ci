@@ -10,4 +10,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: mkdir C:\managed_robots
-      - run: zip -r C:\managed_robots\retry_rcc_defN.zip data\retry_rcc\
+      - run: tar -c -a -f C:\managed_robots\retry_rcc_defN.zip data\retry_rcc\
