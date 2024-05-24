@@ -1,0 +1,13 @@
+---
+name: "Testing zip"
+# Careful! This pushes a git tag to GitHub! The release itself is private.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir C:\managed_robots
+      - run: zip -r C:\managed_robots\retry_rcc_defN.zip data\retry_rcc\
