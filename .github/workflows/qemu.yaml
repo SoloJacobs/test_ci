@@ -9,7 +9,9 @@ jobs:
     steps:
       - run: docker run --privileged --rm tonistiigi/binfmt --install arm64
       - run: ls ~
-      - run: sudo /proc/sys/fs/binfmt_misc/qemu-aarch64 --help
-      - run: sudo /proc/sys/fs/binfmt_misc/qemu --help
+      - run: sudo qemu-aarch64 --help
+        if: always()
       - run: docker run --privileged --rm tonistiigi/binfmt --uninstall arm64
+        if: always()
       - run: sudo find / -name '*qemu*'
+        if: always()
