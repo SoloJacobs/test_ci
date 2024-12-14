@@ -8,10 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: docker run --privileged --rm tonistiigi/binfmt --install arm64
-      - run: ls ~
-      - run: sudo qemu-aarch64 --help
-        if: always()
-      - run: docker run --privileged --rm tonistiigi/binfmt --uninstall arm64
-        if: always()
-      - run: sudo find / -name '*qemu*'
-        if: always()
+      - run: docker run --rm --platform linux/arm64 alpine uname -a
