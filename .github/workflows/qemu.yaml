@@ -7,8 +7,9 @@ jobs:
   qemu:
     runs-on: ubuntu-latest
     steps:
-      - run: find / -name '*qemu*'
       - run: docker run --privileged --rm tonistiigi/binfmt --install arm64
       - run: ls ~
       - run: sudo /proc/sys/fs/binfmt_misc/qemu-aarch64 --help
       - run: sudo /proc/sys/fs/binfmt_misc/qemu --help
+      - run: docker run --privileged --rm tonistiigi/binfmt --uninstall arm64
+      - run: sudo find / -name '*qemu*'
