@@ -7,8 +7,6 @@ jobs:
   qemu:
     runs-on: ubuntu-latest
     steps:
-      - run: docker run --rm --platform linux/arm64 alpine uname -a
       - run: docker run --privileged --rm tonistiigi/binfmt --install arm64
-        if: always()
       - run: docker run --rm --platform linux/arm64 alpine uname -a
-        if: always()
+      - run: go help
