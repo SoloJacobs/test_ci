@@ -1,0 +1,12 @@
+---
+name: "QEMU"
+# Careful! This pushes a git tag to GitHub! The release itself is private.
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: docker/setup-qemu-action@v3
+      - run: qemu-img create -f qcow2 newvm.qcow 1G
