@@ -5,8 +5,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  release:
+  qemu:
     runs-on: ubuntu-latest
     steps:
       - uses: docker/setup-qemu-action@v3
       - run: docker run --privileged --rm tonistiigi/binfmt
+      - run: which qemu-aarch64
