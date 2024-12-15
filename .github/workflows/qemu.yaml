@@ -8,9 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: docker/setup-qemu-action@v3
+        with:
+          platforms: arm64, i386
       - name: "Create an example binary for AArch64"
-        run: go mod init hello
-      - run: |
+        run: |
+          go mod init hello
           cat << EOL > hello.go
           package main
 
@@ -18,8 +20,8 @@ jobs:
             println("Hello, AArch64!")
           }
           EOL
-      - run: GOARCH=arm64 go build hello.go
+          GOARCH=arm64 go build hello.go
       - name: "This would fail without docker/setup-qemu-action"
         run: ./hello
       - name: "You can also run images from other platforms"
-        run: docker run --rm --platform linux/arm64 alpine uname -a
+        run: docker --platform i386 linux/arm64 run hello-world
