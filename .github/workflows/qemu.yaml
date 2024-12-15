@@ -7,6 +7,19 @@ jobs:
   qemu:
     runs-on: ubuntu-latest
     steps:
-      - run: docker run --privileged --rm tonistiigi/binfmt --install arm64
-      - run: docker run --rm --platform linux/arm64 alpine uname -a
-      - run: go help
+      - uses: docker/setup-qemu-action@v3
+      - name: "Create an example binary for AArch64"
+        run: go mod init hello
+      - run: |
+          cat << EOL > hello.go
+          package main
+
+          func main() {
+            println("Hello, AArch64!")
+          }
+          EOL
+      - run: GOARCH=arm64 go build hello.go
+      - name: "This would fail without docker/setup-qemu-action"
+        run: ./hello
+      - name: "You can also run images from other platforms"
+        run: docker run --rm --platform linux/arm64 alpine uname -a
