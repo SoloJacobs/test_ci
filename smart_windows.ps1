@@ -21,8 +21,8 @@ if (-not $smartctlVersion -match '^smartctl 7') {
 }
 
 # Output for smart_posix_all
-$devices | ForEach-Object { $_.Split(" ")[0].Trim() }
 Write-Host "<<<smart_posix_all:sep(0)>>>"
+$devices = smartctl --scan | ForEach-Object { $_.Split("#")[0].Trim() }
 foreach ($device in $devices) {
     $smartOutput = smartctl --all --json=c $device
     Write-Host $smartOutput
