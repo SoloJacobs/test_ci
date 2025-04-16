@@ -24,15 +24,15 @@ if (-not $smartctlVersion -match '^smartctl 7') {
 $devices | ForEach-Object { $_.Split(" ")[0].Trim() }
 Write-Host "<<<smart_posix_all:sep(0)>>>"
 foreach ($device in $devices) {
-    smartctl --all --json=c $device
-    Write-Host ""
+    $smartOutput = smartctl --all --json=c $device
+    Write-Host $smartOutput
 }
 
 Write-Host "<<<smart_posix_scan_arg:sep(0)>>>"
 $deviceArgs = smartctl --scan | ForEach-Object { $_.Split("#")[0].Trim() }
 foreach ($deviceArg in $deviceArgs) {
     # Run smartctl with the extracted device information
-    smartctl --all --json=c $deviceArg
+    smartctl --all --json=c ($deviceArg).Split(" ")
     Write-Host ""
 }
 
