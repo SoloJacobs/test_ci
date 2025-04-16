@@ -16,23 +16,20 @@ if (-not (Get-Command smartctl -ErrorAction SilentlyContinue)) {
 
 # Check smartctl version
 $smartctlVersion = smartctl -V
-if ($smartctlVersion -notmatch '^smartctl 7') {
+if (-not $smartctlVersion -match '^smartctl 7') {
     Write-ErrorAndExit "ERROR: smartctl version 7 or newer is required"
 }
 
 # Output for smart_posix_all
+$devices | ForEach-Object { $_.Split(" ")[0].Trim() }
 Write-Host "<<<smart_posix_all:sep(0)>>>"
-$devices = smartctl --scan | ForEach-Object { $_.Split("#")[0].Trim() }
-
 foreach ($device in $devices) {
     smartctl --all --json=c $device
     Write-Host ""
 }
 
-# Output for smart_posix_scan_arg
 Write-Host "<<<smart_posix_scan_arg:sep(0)>>>"
 $deviceArgs = smartctl --scan | ForEach-Object { $_.Split("#")[0].Trim() }
-
 foreach ($deviceArg in $deviceArgs) {
     # Run smartctl with the extracted device information
     smartctl --all --json=c $deviceArg
